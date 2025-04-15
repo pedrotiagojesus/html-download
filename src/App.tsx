@@ -16,7 +16,7 @@ function App() {
     const [previewCss, setPreviewCss] = useState<string>("");
 
     useEffect(() => {
-        fetch("/templates/example.html")
+        fetch(`${import.meta.env.BASE_URL}templates/example.html`)
             .then((res) => res.text())
             .then((text) => {
                 setPreviewHtml(text);
@@ -27,7 +27,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fetch("/templates/example.css")
+        fetch(`${import.meta.env.BASE_URL}templates/example.css`)
             .then((res) => res.text())
             .then((text) => {
                 setPreviewCss(text);
@@ -51,7 +51,7 @@ function App() {
                 <button className="btn btn-primary" onClick={() => resetTransform()}>
                     <i className="bi bi-arrow-clockwise"></i>
                 </button>
-                <button className="btn btn-primary" onClick={async() => await downloadPng("preview-content")}>
+                <button className="btn btn-primary" onClick={async () => await downloadPng("preview-content")}>
                     <i className="bi bi-download"></i>
                 </button>
             </div>
@@ -140,8 +140,8 @@ function App() {
                                             const contentWidth = content.scrollWidth + margin * 2;
                                             const contentHeight = content.scrollHeight + margin * 2;
 
-                                            const scaleX = containerWidth /  (contentWidth + margin * 2);
-                                            const scaleY = containerHeight /  (contentHeight + margin * 2);
+                                            const scaleX = containerWidth / (contentWidth + margin * 2);
+                                            const scaleY = containerHeight / (contentHeight + margin * 2);
 
                                             const scale = Math.min(scaleX, scaleY, 1);
 
