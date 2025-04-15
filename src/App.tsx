@@ -16,7 +16,6 @@ function App() {
     const [previewCss, setPreviewCss] = useState<string>("");
 
     useEffect(() => {
-        console.log(import.meta.env.BASE_URL);
         fetch(`${import.meta.env.BASE_URL}templates/example.html`)
             .then((res) => res.text())
             .then((text) => {
